@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DateGuessr</string>
+    <string name="imagefromwikiapi">imageFromWikiApi</string>
+    <string name="submit">Submit</string>
+    <string name="show_results">Show results</string>
+    <string name="enter_a_year">Enter a year</string>
+    <string name="next_level">Next level</string>
+    <string name="level">Level </string>
+    <string name="total_score">"Total score: "</string>
+    <string name="try_again">Try again!</string>
+</resources>
