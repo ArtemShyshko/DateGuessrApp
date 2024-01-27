@@ -6,7 +6,8 @@ import androidx.room.Upsert;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
+import io.reactivex.Completable;
+import io.reactivex.Single;
 
 @Dao
 public interface ImageDataDao {
@@ -15,10 +16,10 @@ public interface ImageDataDao {
     void upsert(ImageData imageData);
 
     @Query("SELECT COUNT(*) FROM image_data")
-    Flowable<Integer> getImagesCount();
+    Single<Integer> getImagesCount();
 
     @Query("SELECT * FROM image_data")
-    Flowable<List<ImageData>> getAllImageDataList();
+    Single<List<ImageData>> getAllImageData();
 
     @Query("SELECT * FROM image_data WHERE fileName = :fileName")
     ImageData getImageDataByFileName(String fileName);
@@ -27,7 +28,7 @@ public interface ImageDataDao {
     ImageData getImageDataById(int id);
 
     @Query("DELETE FROM image_data")
-    void deleteAllImageData();
+    Completable deleteAllImageData();
 
     @Query("DELETE FROM image_data WHERE fileName = :fileName")
     void deleteImageDataByFileName(String fileName);

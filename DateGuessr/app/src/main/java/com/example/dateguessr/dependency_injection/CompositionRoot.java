@@ -3,6 +3,7 @@ package com.example.dateguessr.dependency_injection;
 import com.example.dateguessr.model.wiki_api.WikiApi;
 
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CompositionRoot {
@@ -14,6 +15,7 @@ public class CompositionRoot {
         if (apiInstance == null) {
             apiInstance = new Retrofit.Builder()
                     .baseUrl(BASE_URL_WIKI)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(WikiApi.class);

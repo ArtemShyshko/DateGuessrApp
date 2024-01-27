@@ -1,6 +1,7 @@
 package com.example.dateguessr;
 
 import com.example.dateguessr.model.wiki_api.imageinfo_pojo.DateTimeOriginal;
+import com.example.dateguessr.model.wiki_api.imageinfo_pojo.ImageInfoPage;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -37,4 +38,11 @@ public class Util {
         return decodedFileName;
     }
 
+    public static boolean isExtensionValid(String fileName) {
+        return fileName.toLowerCase().endsWith("jpg") || fileName.toLowerCase().endsWith("jpeg");
+    }
+
+//    public static boolean isImageInfoValid(ImageInfoPage page) {
+//        return fileName.toLowerCase().endsWith("jpg") || fileName.toLowerCase().endsWith("jpeg");
+//    }
 }

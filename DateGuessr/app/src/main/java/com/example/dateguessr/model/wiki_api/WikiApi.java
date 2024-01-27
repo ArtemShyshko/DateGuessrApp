@@ -3,6 +3,8 @@ package com.example.dateguessr.model.wiki_api;
 import com.example.dateguessr.model.wiki_api.imageinfo_pojo.ImageInfoResponse;
 import com.example.dateguessr.model.wiki_api.randompage_pojo.RandomPageResponse;
 
+import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -10,7 +12,7 @@ import retrofit2.http.Query;
 public interface WikiApi {
 
     @GET("api.php")
-    Call<RandomPageResponse> getRandomPage(
+    Single<RandomPageResponse> getRandomPage(
             @Query("format") String format,
             @Query("action") String action,
             @Query("generator") String generator,
@@ -21,7 +23,7 @@ public interface WikiApi {
     );
 
     @GET("api.php")
-    Call<ImageInfoResponse> getImageInfo(
+    Single<ImageInfoResponse> getImageInfo(
             @Query("format") String format,
             @Query("action") String action,
             @Query("titles") String titles,

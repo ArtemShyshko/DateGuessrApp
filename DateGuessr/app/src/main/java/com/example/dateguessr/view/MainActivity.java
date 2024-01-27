@@ -14,6 +14,7 @@ public class MainActivity
         extends BaseActivity
         implements MainSceenView.Listener, ResultsView.Listener {
 
+    private LoadingView loadingView;
     private MainScreenViewImpl mainScreenView;
     private ResultsViewImpl resultsScreenView;
     private DateGuessrViewModel viewModel;
@@ -21,6 +22,8 @@ public class MainActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loadingView = new LoadingView(LayoutInflater.from(this), null);
 
         mainScreenView = new MainScreenViewImpl(LayoutInflater.from(this), null);
         mainScreenView.registerListener(this);
@@ -42,8 +45,7 @@ public class MainActivity
 
     private void render(UiState uiState) {
         if (uiState instanceof UiState.Loading) {
-            setContentView(
-                    new LoadingView(LayoutInflater.from(this), null).getRootView());
+            setContentView(loadingView.getRootView());
         } else if (uiState instanceof UiState.Error) {
             setContentView(mainScreenView.getRootView());
             mainScreenView.setError(((UiState.Error) uiState).getErrorMsg());
